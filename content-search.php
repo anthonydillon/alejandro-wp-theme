@@ -18,6 +18,8 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-summary">
+
+		<?php echo wp_get_attachment_image( get_post_meta($post->ID, 'image', $single = true) ); ?>
 		<?php the_excerpt(); ?>
 	</div><!-- .entry-summary -->
 
