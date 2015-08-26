@@ -364,3 +364,12 @@ require get_template_directory() . '/inc/template-tags.php';
  * @since Twenty Fifteen 1.0
  */
 require get_template_directory() . '/inc/customizer.php';
+
+function remove_menus(){
+
+  remove_menu_page( 'edit.php' );                   //Posts
+  remove_menu_page( 'edit.php?post_type=page' );    //Pages
+  remove_menu_page( 'edit-comments.php' );          //Comments
+
+}
+add_action( 'admin_menu', 'remove_menus' );
