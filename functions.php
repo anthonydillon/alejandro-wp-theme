@@ -144,9 +144,20 @@ function twentyfifteen_widgets_init() {
 	    'name' => 'Pictures',
 	    'singular_name' => 'Picture',
 	   ),
-	  'description' => 'This are the paintings from Ales father.',
+	  'description' => 'Paintings from Aobregon Obregón',
 	  'public' => true,
 	  'menu_position' => 20,
+	  'supports' => array( 'title', 'editor' )
+	));
+
+	register_post_type( 'book', array(
+	  'labels' => array(
+	    'name' => 'Books',
+	    'singular_name' => 'Book',
+	   ),
+	  'description' => 'This are the books that contain Aobregon Obregón work',
+	  'public' => true,
+	  'menu_position' => 21,
 	  'supports' => array( 'title', 'editor' )
 	));
 }
