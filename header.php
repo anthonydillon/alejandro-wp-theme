@@ -12,6 +12,7 @@
 <html <?php language_attributes(); ?> class="no-js">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<title>Aobregon Obregón</title>
 	<meta name="author" content="Anthony Dillon" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="profile" href="http://gmpg.org/xfn/11">

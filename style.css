@@ -15,6 +15,55 @@ Text Domain: ales
 body,
 input {
 	font-family: 'Merriweather', serif;
+	background-color: #e2e2e2;
+}
+
+a:link,
+a:visited,
+h1,
+h2,
+h3,
+h4 {
+	color: #83785E;
+}
+
+.button--primary,
+button,
+input[type=button],
+input[type=reset],
+input[type=submit] {
+	background-color: #262626;
+	color: #C8BCA0;
+}
+
+.button--primary:hover,
+button:hover,
+input[type=button]:hover,
+input[type=reset]:hover,
+input[type=submit]:hover {
+	background-color: #000;
+}
+
+.search-submit {
+	display: none;
+	padding: 5px 10px;
+}
+
+.search-submit img {
+	width: 31px;
+}
+
+.inner-wrapper {
+	background-color: #fff;
+}
+
+header.banner {
+	background-color: #262626;
+}
+
+header.banner a:link,
+header.banner a:visited {
+	color: #C8BCA0;
 }
 
 .picture {
@@ -25,6 +74,14 @@ input {
   padding-bottom: 25px;
 }
 
+.picture:last-of-type {
+	border-bottom: 0;
+}
+
 .picture-header {
 	font-size: 20px;
+}
+
+#main-content img {
+    max-width: 100%;
 }
