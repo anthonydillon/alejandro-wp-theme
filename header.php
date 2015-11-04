@@ -7,43 +7,40 @@
  * @package WordPress
  * @subpackage Ales theme
  */
-?><!DOCTYPE html>
+?>
+<!doctype html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width">
+	<meta name="author" content="Anthony Dillon" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<!--[if lt IE 9]>
 	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5.js"></script>
 	<![endif]-->
-	<?php wp_head(); ?>
+	<link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="//assets.ubuntu.com/v1/vanilla-framework-version-0.0.55.min.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_directory'); ?>/style.css" />
 </head>
 
-<body <?php body_class(); ?>>
-<div id="page" class="hfeed site">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentyfifteen' ); ?></a>
+<body>
+	<header class="banner global" role="banner">
+      <nav role="navigation" class="nav-primary nav-right">
+          <span id="main-navigation-link"><a href="#main-navigation">Jump to site nav</a></span>
+          <div class="logo">
+              <a href="<?php echo site_url(); ?>">
+                  <span>Aobregon Obregón</span>
+              </a>
+          </div>
+      </nav>
+  </header>
 
-	<div id="sidebar" class="sidebar">
-		<header id="masthead" class="site-header" role="banner">
-			<div class="site-branding">
-				<?php
-					if ( is_front_page() && is_home() ) : ?>
-						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php else : ?>
-						<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-					<?php endif;
+	<div class="wrapper">
+		<div id="main-content" class="inner-wrapper">
 
-					$description = get_bloginfo( 'description', 'display' );
-					if ( $description || is_customize_preview() ) : ?>
-						<p class="site-description"><?php echo $description; ?></p>
-					<?php endif;
-				?>
-				<button class="secondary-toggle"><?php _e( 'Menu and widgets', 'twentyfifteen' ); ?></button>
-			</div><!-- .site-branding -->
-		</header><!-- .site-header -->
-
-		<?php get_sidebar(); ?>
-	</div><!-- .sidebar -->
-
-	<div id="content" class="site-content">
+			<div class="row no-border">
+				<div class="three-col">
+					<?php get_sidebar(); ?>
+				</div>
+				<div class="nine-col last-col">

@@ -9,18 +9,16 @@
  * @since Twenty Fifteen 1.0
  */
 ?>
+				</div>
+			</div>
+		</div><!-- /#main-content -->
+	</div><!-- /.wrapper -->
 
-	</div><!-- .site-content -->
-
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			Copyright © <?php echo date("Y"); ?> Alejandra Obregón
-		</div><!-- .site-info -->
-	</footer><!-- .site-footer -->
-
-</div><!-- .site -->
-
-<?php wp_footer(); ?>
+	<footer class="global clearfix" role="contentinfo">
+		<div class="legal clearfix">
+			<p>&copy; 2015 Aobregon Obregón.</p>
+		</div>
+	</footer>
 
 </body>
 </html>

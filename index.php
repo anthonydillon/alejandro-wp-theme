@@ -1,68 +1,49 @@
 <?php
 /**
- * The main template file
+ * The homepage template file
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * e.g., it puts together the home page when no home.php file exists.
- *
- * Learn more: {@link https://codex.wordpress.org/Template_Hierarchy}
- *
- * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
+ * @package Alejandro theme
+ * @since 1.0
  */
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<?php
+	$args = array(
+		'posts_per_page' => 100,
+		'post_type' => 'picture'
+	);
+	query_posts($args);
+	if (have_posts()) : while (have_posts()) : the_post();
+?>
+	<article id="post-<?php the_ID(); ?>" class="picture clearfix">
+		<?php $image = get_post_meta($post->ID, 'image', $single = true); ?>
 
-		<?php
-		// Start the loop.
-		$args = array(
-			'posts_per_page' => 100,
-			'post_type' => 'picture'
-		);
-		query_posts($args);
-			if ( have_posts() ) : ?>
-
-			<?php if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-					<?php echo wp_get_attachment_image( get_post_meta($post->ID, 'image', $single = true) ); ?>
-				</header>
-			<?php endif; ?>
-
+		<div class="three-col">
 			<?php
-			while ( have_posts() ) : the_post();
+				$image_attributes = wp_get_attachment_image_src( $image );
+				if( $image_attributes ) :
+			?>
+				<img src="<?php echo $image_attributes[0]; ?>" width="<?php echo $image_attributes[1]; ?>" height="<?php echo $image_attributes[2]; ?>">
+			<?php else : ?>
+				<img src="<?php bloginfo('template_directory'); ?>/img/no-image-available.png" alt="">
+			<?php endif; ?>
+		</div>
+		<div class="six-col last-col">
+			<h2 class="picture-header"><a href="<?php the_permalink(); ?>"><?php the_title( ); ?></a></h2>
+			<p class="entry-reg">Reg: <?php echo get_post_meta($post->ID, 'reg-no', $single = true); ?></p>
+			<p class="entry-date">Date: <?php echo get_post_meta($post->ID, 'date', $single = true); ?></p>
+			<p class="entry-size">Size: <?php echo get_post_meta($post->ID, 'width', $single = true); ?> x <?php echo get_post_meta($post->ID, 'height', $single = true); ?></p>
+			<p class="entry-technique">Technique: <?php echo get_post_meta($post->ID, 'technique', $single = true); ?></p>
+		</div>
+	</article>
+<?php
+endwhile;
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'content', get_post_format() );
+else :
+	get_template_part( 'content', 'none' );
 
-			// End the loop.
-			endwhile;
-
-			// Previous/next page navigation.
-			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'twentyfifteen' ),
-				'next_text'          => __( 'Next page', 'twentyfifteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>',
-			) );
-
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'content', 'none' );
-
-		endif;
-		?>
-
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
+endif;
+?>
 
 <?php get_footer(); ?>
