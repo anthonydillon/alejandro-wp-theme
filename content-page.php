@@ -8,7 +8,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>">
-	<div class="three-col">
+	<div class="four-col">
 		<?php
 			$image_attributes = wp_get_attachment_image_src( get_post_meta($post->ID, 'image', $single = true), 'medium' );
 			if( $image_attributes ) :
@@ -18,7 +18,7 @@
 			<img src="<?php bloginfo('template_directory'); ?>/img/no-image-available.png" alt="">
 		<?php endif; ?>
 	</div>
-	<div class="six-col last-col">
+	<div class="five-col last-col">
 		<?php
 				the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_post_permalink() ) ), '</a></h2>' );
 		?>
@@ -26,6 +26,15 @@
 		<p class="entry-date">Date: <?php echo get_post_meta($post->ID, 'date', $single = true); ?></p>
 		<p class="entry-size">Size: <?php echo get_post_meta($post->ID, 'width', $single = true); ?> x <?php echo get_post_meta($post->ID, 'height', $single = true); ?></p>
 		<p class="entry-technique">Technique: <?php echo get_post_meta($post->ID, 'technique', $single = true); ?></p>
+	</div>
+
+	<div class="nine-col">
+		<?php
+			the_content();
+		?>
+	</div>
+
+	<div class="nine-col">
 		<h4>Appears in</h4>
 		<?php
 		$books = get_post_meta($post->ID, 'books');
@@ -34,9 +43,11 @@
 		<ul class="list">
 			<?php for ($i = 0; $i < count($books); $i++ ) {
 				echo '<li><a href="' . get_permalink( $books[$i] ) . '">' . get_the_title( $books[$i] ) . '</a></li>';
-			}
-		else :?>
+			}?>
+		</ul>
+		<?php else :?>
 			<p>Nothing currently</p>
 		<?php endif; ?>
+		<?php edit_post_link('Edit book', '<p>', '</p>'); ?>
 	</div>
 </article>
