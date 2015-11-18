@@ -9,7 +9,7 @@
  * @package Alejandro theme
  * @since 1.0
  */
-
+define ('WPLANG', 'es_ES');
 /**
  * Register widget area.
  */

@@ -12,6 +12,7 @@
 
 <article id="post-<?php the_ID(); ?>" class="picture clearfix">
 	<div class="three-col">
+		<a href="<?php the_permalink(); ?>">
 		<?php
 			$image_attributes = wp_get_attachment_image_src( get_post_meta($post->ID, 'image', $single = true) );
 			if( $image_attributes ) :
@@ -20,6 +21,7 @@
 		<?php else : ?>
 			<img src="<?php bloginfo('template_directory'); ?>/img/no-image-available.png" alt="">
 		<?php endif; ?>
+		</a>
 	</div>
 	<div class="six-col last-col">
 		<?php
@@ -27,9 +29,9 @@
 		?>
 		<?php if (get_post_type() == 'picture') : ?>
 		<p class="entry-reg">Reg: <?php echo get_post_meta($post->ID, 'reg-no', $single = true); ?></p>
-		<p class="entry-date">Date: <?php echo get_post_meta($post->ID, 'date', $single = true); ?></p>
-		<p class="entry-size">Size: <?php echo get_post_meta($post->ID, 'width', $single = true); ?> x <?php echo get_post_meta($post->ID, 'height', $single = true); ?></p>
-		<p class="entry-technique">Technique: <?php echo get_post_meta($post->ID, 'technique', $single = true); ?></p>
+		<p class="entry-date">Fecha: <?php echo get_post_meta($post->ID, 'date', $single = true); ?></p>
+		<p class="entry-size">Dimensiones: <?php echo get_post_meta($post->ID, 'width', $single = true); ?> x <?php echo get_post_meta($post->ID, 'height', $single = true); ?></p>
+		<p class="entry-technique">Técnica: <?php echo get_post_meta($post->ID, 'technique', $single = true); ?></p>
 		<?php endif; ?>
 	</div>
 </article>
